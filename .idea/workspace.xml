@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="496729f5-3c1f-4522-bdf4-5115fc3e58fc" name="Changes" comment="">
+    <list default="true" id="496729f5-3c1f-4522-bdf4-5115fc3e58fc" name="Changes" comment="Implementing the final GUI and Thread">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantproject/Apps/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantproject/Apps/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/restaurantproject/Apps/App$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/restaurantproject/Apps/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/restaurantproject/Apps/BackgroundPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/restaurantproject/Apps/UnderlinedPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/restaurantproject/Apps/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/restaurantproject/Apps/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/restaurantproject/Apps/BackgroundPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/restaurantproject/Apps/BackgroundPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/restaurantproject/Apps/UnderlinedPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/restaurantproject/Apps/UnderlinedPanel.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +37,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.App (1).executor": "Run",
+    "Application.App (2).executor": "Run",
     "Application.App.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -121,11 +122,24 @@
       <workItem from="1742476809771" duration="113000" />
       <workItem from="1742815049921" duration="12000" />
       <workItem from="1742815065743" duration="1000" />
-      <workItem from="1742920557740" duration="391000" />
+      <workItem from="1742920557740" duration="798000" />
     </task>
+    <task id="LOCAL-00001" summary="Implementing the final GUI and Thread">
+      <option name="closed" value="true" />
+      <created>1742921258799</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1742921258799</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implementing the final GUI and Thread" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementing the final GUI and Thread" />
   </component>
 </project>
