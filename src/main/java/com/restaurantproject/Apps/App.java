@@ -45,7 +45,8 @@ public class App extends JFrame implements ActionListener {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
-        ImageIcon image = new ImageIcon("resources/images.png");
+        //setting the app image icon
+        ImageIcon image = new ImageIcon("C:\\Users\\Anson\\OneDrive - Technological University Dublin\\Year 2\\Semester 2\\OOSD\\OOSD Assignment 3\\RestaurantProject2\\SelfOrderingSystem\\src\\main\\resources\\KFC_logo.svg.png");
         this.setIconImage(image.getImage());
 
         String URL = "C:\\Users\\anson\\OneDrive - Technological University Dublin\\Year 2\\Semester 2\\OOSD\\OOSD Assignment 3\\RestaurantProject\\src\\main\\resources\\images.png";
