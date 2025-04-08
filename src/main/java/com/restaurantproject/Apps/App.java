@@ -1,8 +1,7 @@
 package com.restaurantproject.Apps;
 
-import com.restaurantproject.Restaurant.Chef;
 import com.restaurantproject.Restaurant.OrderItem;
-import com.restaurantproject.Restaurant.Waiter;
+import com.restaurantproject.Restaurant.Restaurant;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,6 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class App extends JFrame implements ActionListener {
 
@@ -20,21 +20,28 @@ public class App extends JFrame implements ActionListener {
     private final int WIDTH = 500;
     private String food;
     private String typeOption;
+    private String category;
     private Double price;
-    private int quantity = 0;
+    private int quantity = 1;
 
     private JLabel numberLabel,logoLabel, messageLabel, messageLabel2, viewOrder;
     private JButton start;
 
     private final List<OrderItem> orderCartList;
-    private final List<OrderItem> orderItemList;
+    private ArrayList<OrderItem> foodList;
     private OrderItem orderCart;
     private OrderItem orderItem;
 
+    String[] categoryImage = {"transparent_Category.png","bucket_Category.png","burger_Category.png","chicken_Category.png","dessert_Category.png","drink_Category.png"};
+    String[] categoryName = {"Recommended","Bucket","Burger","Chicken","Dessert","Drink",};
+
     public App(){
         orderCartList = new ArrayList<>();
-        orderItemList = new ArrayList<>();
+        foodList = new ArrayList<>();
         this.initialising();
+
+        Food_Insert food_insert = new Food_Insert();
+        foodList = food_insert.getOrderItemsList();
     }
 
     private void initialising(){
@@ -64,6 +71,7 @@ public class App extends JFrame implements ActionListener {
      */
     private JPanel startPanel() {
         JPanel panel = new JPanel();
+        panel.setSize(new Dimension(WIDTH, HEIGHT));
         panel.setBounds(50, 450, 400, 200);
         panel.setLayout(null);
         panel.setOpaque(true);
@@ -157,7 +165,7 @@ public class App extends JFrame implements ActionListener {
         eatInType.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                swapping(FoodMenu());
+                swapping(CategoryPanel());
                 typeOption = "Eat In";
             }
         });
@@ -168,7 +176,7 @@ public class App extends JFrame implements ActionListener {
         takeAwayType.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                swapping(FoodMenu());
+                swapping(CategoryPanel());
                 typeOption = "Take Away";
             }
         });
@@ -181,13 +189,91 @@ public class App extends JFrame implements ActionListener {
         return orderTypePanel;
     }
 
+    private JPanel CategoryPanel() {
+        JPanel categoryPanel = new JPanel(new BorderLayout());
+        categoryPanel.setSize(WIDTH,HEIGHT);
+
+        JPanel categoryHeaderPanel = headPanel("Category");
+
+        JPanel categoryMiddlePanel = new JPanel();
+        int numItems = 0;
+        for (int i = 0; i < categoryName.length; i++) {
+            numItems = i; //getting the total number of panel
+            String fileName = categoryImage[i]; // example: burger
+            String resourcePath = "/Category-File/" + fileName;
+            JPanel categoryFoodPanel = CategoryFoodPanel(resourcePath,categoryName[i]);
+            categoryFoodPanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+            categoryFoodPanel.setBackground(Color.WHITE);
+            categoryMiddlePanel.add(categoryFoodPanel);
+        }
+
+        //re-calculate the size when the number of panel increase
+        int rows = (int) Math.ceil(numItems / 4.0);
+        int panelHeight = rows * 235;
+
+        categoryMiddlePanel.setBackground(Color.WHITE);
+        categoryMiddlePanel.setPreferredSize(new Dimension(WIDTH - 25, panelHeight));
+
+        JPanel categoryBottomPanel = bottomPanel("CANCEL", "CONFIRM");
+
+        categoryPanel.add(categoryHeaderPanel, BorderLayout.NORTH);
+        categoryPanel.add(categoryMiddlePanel, BorderLayout.CENTER);
+        categoryPanel.add(categoryBottomPanel, BorderLayout.SOUTH);
+
+        return categoryPanel;
+    }
+
+    private JPanel CategoryFoodPanel(String filePath, String name) {
+        JPanel categoryPanel = new JPanel();
+        categoryPanel.setLayout(new BoxLayout(categoryPanel,BoxLayout.Y_AXIS));
+        categoryPanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+
+        JPanel container = new JPanel(new BorderLayout());
+        container.setBackground(Color.WHITE);
+
+        URL imageUrl = getClass().getResource(filePath);
+        JLabel thumbnail = null;
+        if (imageUrl == null) {
+            System.out.println("Image not found: " + filePath);
+        } else {
+            ImageIcon icon = new ImageIcon(imageUrl);
+            Image scaledImage = icon.getImage().getScaledInstance(WIDTH / 4, HEIGHT - 580, Image.SCALE_SMOOTH);
+            thumbnail = new JLabel(new ImageIcon(scaledImage));
+            thumbnail.setAlignmentX(Component.CENTER_ALIGNMENT);
+            thumbnail.setPreferredSize(new Dimension(WIDTH / 4, HEIGHT - 580));
+        }
+
+        JLabel categoryLabelName = new JLabel(name);
+        categoryLabelName.setHorizontalAlignment(SwingConstants.CENTER);
+        categoryLabelName.setAlignmentX(Component.CENTER_ALIGNMENT);
+        categoryLabelName.setFont(new Font("Times New Roman",Font.BOLD,12));
+        categoryPanel.setBorder(BorderFactory.createEmptyBorder(25, 0, 10, 0));
+
+        container.add(thumbnail,BorderLayout.NORTH);
+        container.add(categoryLabelName, BorderLayout.CENTER);
+        categoryPanel.add(container);
+
+        categoryPanel.putClientProperty("name", name);
+        categoryPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JPanel clickPanel = (JPanel) e.getSource();
+                category = (String) clickPanel.getClientProperty("name");
+                swapping(FoodMenu(category));
+                System.out.println(category);
+            }
+        });
+
+        return categoryPanel;
+    }
+
     /**
      * Page 3 - Once the user select the option
      *        - It will move to menu page which allow user's to select the food with the quantity
      *        - Once user's has confirmed the order
      *        - The user's can either cancel the order or either continue to check the order list page
      */
-    private JPanel FoodMenu() {
+    private JPanel FoodMenu(String category) {
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setSize(WIDTH, HEIGHT);
 
@@ -197,12 +283,14 @@ public class App extends JFrame implements ActionListener {
         JPanel headerPanel = headPanel("FOOD MENU");
 
         int numItems = 0;
-        for (int i = 0; i < 15; i++) {
-            numItems = i; //getting the total number of panel
-            JPanel foodPanel = FoodPanel("", "Double Cheese Burger " + numItems, 3.50);
-            foodPanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-            foodPanel.setBackground(Color.WHITE);
-            middlePanel.add(foodPanel);
+        for (OrderItem od: foodList) {
+            if (category.equals(od.getCategory())) {
+                numItems++; //getting the total number of panel
+                JPanel foodPanel = FoodPanel(od.getImage(), od.getFoodName(), od.getFoodPrice());
+                foodPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+                foodPanel.setBackground(Color.WHITE);
+                middlePanel.add(foodPanel);
+            }
         }
 
         //re-calculate the size when the number of panel increase
@@ -216,7 +304,7 @@ public class App extends JFrame implements ActionListener {
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 
-        JPanel bottomPanel = bottomPanel("CANCEL", "CONFIRM");
+        JPanel bottomPanel = bottomPanel("GO BACK", "CONFIRM");
 
         // add all the panel to the main panel then return it
         mainPanel.add(headerPanel, BorderLayout.NORTH);
@@ -230,12 +318,13 @@ public class App extends JFrame implements ActionListener {
         JPanel headerPanel = new JPanel(new BorderLayout());
 
         JLabel logoLabel = new JLabel("KFC");
-        logoLabel.setBorder(BorderFactory.createEmptyBorder(0,20,0,100));
+        logoLabel.setBorder(BorderFactory.createEmptyBorder(0,55,0,80));
         logoLabel.setFont(new Font("Bernard MT Condensed",Font.BOLD,30));
         logoLabel.setForeground(new Color(255, 26, 26));
 
         JLabel headerLabel = new JLabel(headerName);
-        headerLabel.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 0));
+        headerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        headerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         headerLabel.setPreferredSize(new Dimension(160,60));
         headerLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
         headerLabel.setForeground(Color.WHITE);
@@ -270,37 +359,41 @@ public class App extends JFrame implements ActionListener {
     }
 
     private JButton ButtonPanel(String text) {
-        JButton button2 = new JButton(text);
-        button2.setBorder(BorderFactory.createLineBorder(Color.RED));
-        button2.setFont(new Font("Times New Roman",Font.BOLD,14));
-        button2.setForeground(Color.WHITE);
-        button2.setBackground(Color.RED);
-        button2.setPreferredSize(new Dimension(220,40));
-        button2.setFocusable(false);
-        button2.addActionListener(this);
-        return button2;
+        JButton button= new JButton(text);
+        button.setBorder(BorderFactory.createLineBorder(Color.RED));
+        button.setFont(new Font("Times New Roman",Font.BOLD,14));
+        button.setForeground(Color.WHITE);
+        button.setBackground(Color.RED);
+        button.setPreferredSize(new Dimension(220,40));
+        button.setFocusable(false);
+        button.addActionListener(this);
+        return button;
     }
 
-    private JPanel FoodPanel(String filePath, String name, Double prices) {
+    private JPanel FoodPanel(String filePath, String name, double prices) {
         JPanel foodPanel = new JPanel();
         foodPanel.setLayout(new BoxLayout(foodPanel,BoxLayout.Y_AXIS));
         foodPanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
         JPanel container = new JPanel(new BorderLayout());
-        container.setBackground(Color.LIGHT_GRAY);
+        container.setBackground(Color.WHITE);
 
-        ImageIcon img = new ImageIcon(filePath);
-        JLabel thumbnail = new JLabel("<html><div style='text-align: center;'>product</div></html>");
+        String resourcePath = "/Food-Image-File/" + filePath;
+        URL imageUrl = getClass().getResource(resourcePath);
+        ImageIcon icon = new ImageIcon(imageUrl);
+        Image scaledImage = icon.getImage().getScaledInstance(WIDTH / 4, HEIGHT - 580, Image.SCALE_SMOOTH);
+        JLabel thumbnail = new JLabel(new ImageIcon(scaledImage));
         thumbnail.setAlignmentX(Component.CENTER_ALIGNMENT);
-        thumbnail.setIcon(img);
         thumbnail.setPreferredSize(new Dimension(WIDTH / 4, HEIGHT - 580));
 
-        JLabel foodName = new JLabel("<html><div style='text-align: center;'>" + name + "</div></html>");
+        JLabel foodName = new JLabel(name);
+        foodName.setHorizontalAlignment(SwingConstants.CENTER);
         foodName.setAlignmentX(Component.CENTER_ALIGNMENT);
         foodName.setFont(new Font("Times New Roman",Font.BOLD,10));
         foodPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
 
-        JLabel foodPrice = new JLabel("<html><div style='text-align: center;'> € " + prices + "</div></html>");
+        JLabel foodPrice = new JLabel(String.valueOf(prices));
+        foodPrice.setHorizontalAlignment(SwingConstants.CENTER);
         foodPrice.setAlignmentX(Component.CENTER_ALIGNMENT);
         foodPrice.setFont(new Font("Times New Roman",Font.BOLD,12));
         foodPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
@@ -322,7 +415,7 @@ public class App extends JFrame implements ActionListener {
                 price = (Double) clickedPanel.getClientProperty("prices");
                 orderCart = new OrderItem(food,price,quantity);
                 System.out.println(orderCart.toString());
-                swapping(orderPanel());
+                swapping(orderPanel(icon,name,prices));
 //                System.out.println(orderItemList.size());z
             }
         });
@@ -333,7 +426,7 @@ public class App extends JFrame implements ActionListener {
     /**
      * Page 4 - the page for user's to confirm the order and increase or decrease the quantity
      */
-    private JPanel orderPanel() {
+    private JPanel orderPanel(ImageIcon filePath, String foodName, double foodPrices) {
         JPanel orderPanel = new JPanel(new BorderLayout());
         orderPanel.setLayout(new BoxLayout(orderPanel,BoxLayout.Y_AXIS));
         orderPanel.setSize(WIDTH, HEIGHT);
@@ -350,7 +443,7 @@ public class App extends JFrame implements ActionListener {
         JPanel foodOrderPanel = new UnderlinedPanel();
         foodOrderPanel.setBorder(BorderFactory.createEmptyBorder(0, 0,5,0));
         foodOrderPanel.setBackground(Color.WHITE);
-        foodOrderPanel.add(getFoodPanel(null,orderCart.getFoodName(),orderCart.getFoodPrice()));
+        foodOrderPanel.add(getFoodPanel(filePath,foodName,foodPrices));
         midPanel.add(foodOrderPanel);
 
         JPanel addAndMinusPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -389,13 +482,13 @@ public class App extends JFrame implements ActionListener {
         return orderPanel;
     }
 
-    private JPanel getFoodPanel(Image foodImages, String foodName, Double price) {
+    private JPanel getFoodPanel(ImageIcon foodImages, String foodName, Double price) {
         JPanel foodOrderPanel = new JPanel(new BorderLayout());
         foodOrderPanel.setBackground(Color.WHITE);
         foodOrderPanel.setBorder(BorderFactory.createEmptyBorder(0, 20,0,0));
         foodOrderPanel.setPreferredSize(new Dimension(WIDTH, HEIGHT - 650));
 
-        JPanel foodWestImage = new JPanel((LayoutManager) foodImages);
+        JLabel foodWestImage = new JLabel(foodImages);
         if (foodImages == null) {
             // if the image is == to null, then set the background color to null
             foodWestImage.setBackground(Color.GRAY);
@@ -643,7 +736,9 @@ public class App extends JFrame implements ActionListener {
         this.getContentPane().add(panel);
         this.revalidate();
         this.repaint();
-        System.out.println("✅ Successfully Switched Panel!");
+        this.add(logoLabel);
+        this.add(messageLabel);
+        this.add(messageLabel2);
     }
 
     /**
@@ -675,7 +770,7 @@ public class App extends JFrame implements ActionListener {
      * A function method that check the duplicate value
      */
     private boolean isOrderNumberSame(int orderNumber) {
-        for (OrderItem item : orderItemList) {
+        for (OrderItem item : orderCartList) {
             if (item.getOrderNumber() == orderNumber) {
                 return true;
             }
@@ -691,70 +786,57 @@ public class App extends JFrame implements ActionListener {
         } else if (e.getActionCommand().equals("CANCEL")) {
             //once the user cancel the order, all the item on the list should be clear
             orderCartList.removeAll(orderCartList);
-            addingPanel(startPanel());
+            swapping(startPanel());
         } else if (e.getActionCommand().equals("CONFIRM")) {
             swapping(OrderList());
             System.out.println("Switched to Order List");
         } else if (e.getActionCommand().equals("BACK")) {
-            swapping(FoodMenu());
+            swapping(CategoryPanel());
             System.out.println("Switched back to Food Menu!");
+        } else if (e.getActionCommand().equals("GO BACK")) {
+            swapping(CategoryPanel());
         } else if (e.getActionCommand().equals("ADD TO CART")) {
-            swapping(FoodMenu());
-            orderCart = new OrderItem(typeOption, food, price, quantity);
+            swapping(CategoryPanel());
+            orderCart = new OrderItem(category,typeOption, food, price, quantity);
             orderCartList.add(orderCart);
             viewOrder.setText("Total Items x " + orderCartList.size());
             System.out.println("DEBUG: \n" + orderCart.toString());
 
             //after add to the cart set the quantity back to 0
-            quantity = 0;
+            quantity = 1;
             System.out.println("The food is been added: " + orderCart.toString());
         } else if (e.getActionCommand().equals("+")) {
             quantity++;
             numberLabel.setText("    " + quantity);
         } else if (e.getActionCommand().equals("-")) {
-            if (quantity <= 0)
-                quantity = 0;
+            if (quantity <= 1)
+                quantity = 1;
             else
                 quantity--;
 
             numberLabel.setText("    " + quantity);
         } else if (e.getActionCommand().equals("PROCESS ORDER")) {
+            Restaurant restaurant = null;
             int orderNumber = orderNumberGenerator();
 
             // transforming the order item from the cart to the new list for waiter and chef to handle the order
             for (OrderItem oI: orderCartList) {
-                orderItem = new OrderItem(orderNumber, oI.getOrderType(), oI.getFoodName(), oI.getFoodPrice(), oI.getQuantity());
-                orderItemList.add(orderItem);
+                orderItem = new OrderItem(orderNumber, oI.getOrderType(), category, oI.getFoodName(), oI.getFoodPrice(), oI.getQuantity());
+                restaurant = new Restaurant(orderItem);
+                restaurant.processOrder();
             }
 
-            // debug
-            System.out.println("DEBUG: " + orderItem.toString());
-            System.out.println("DEBUG LIST: " + orderItemList.toString());
-
-            //switching the panel
+            int time = 2000;
             swapping(PaymentPanel());
-            ProcessTransformPanel(PaymentSuccessPanel(),1000);
-            ProcessTransformPanel(OrderNumberPanel(),2000);
-
-            Chef chef = new Chef();
-            Waiter waiter = new Waiter(orderItemList,chef);
-            chef.start();
-            waiter.start();
-
-            if(!waiter.getIsComplete())
-                ProcessTransformPanel(NotifyCustomerPanel(),3000);
+            ProcessTransformPanel(PaymentSuccessPanel(),time);
+            ProcessTransformPanel(OrderNumberPanel(),time * 2);
+            ProcessTransformPanel(NotifyCustomerPanel(),time * 4);
+            ProcessTransformPanel(startPanel(),time * 6);
         }
     }
 
-    private void addingPanel(JPanel panel) {
-        swapping(panel);
-        this.add(logoLabel);
-        this.add(messageLabel);
-        this.add(messageLabel2);
-    }
-
     private void ProcessTransformPanel(JPanel panel, int time) {
-        Timer timer = new Timer(time, event -> swapping(panel));
+        Timer timer = new Timer(time, e -> swapping(panel));
         timer.setRepeats(false);
         timer.start();
     }

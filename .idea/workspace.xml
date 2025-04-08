@@ -5,10 +5,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="496729f5-3c1f-4522-bdf4-5115fc3e58fc" name="Changes" comment="Implementing the final GUI and Thread">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/KFC_logo.svg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurantproject/Apps/Food_Insert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/bucket_Category_File/Bonesless Meal 3pc.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/bucket_Category_File/Bonesless Meal 4pc.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/bucket_Category_File/Colonel's Meal 2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/bucket_Category_File/Colonel's Meal 3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/bucket_Category_File/Colonel's Meal 4pc.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/bucket_Category_File/Hot Wings Meal.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/bucket_Category_File/Large Popcorn Meal.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/bucket_Category_File/Might Bucket.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/bucket_Category_File/Regular Popcorn Meal.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/burger_Category_File/BBQ Tower Burger.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/burger_Category_File/Filter Burger.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/burger_Category_File/Filter Tower Burger.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/burger_Category_File/Zinger Burger.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/burger_Category_File/Zinger Stacker.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/burger_Category_File/Zinger Tower Burger.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/chicken_Category_File/Chicken 1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/chicken_Category_File/Chicken 2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/chicken_Category_File/Chicken 3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/chicken_Category_File/Chicken 6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/chicken_Category_File/Hot Wings 2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/chicken_Category_File/Hot Wings 3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/chicken_Category_File/Kansas BBQ Dipped.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/chicken_Category_File/Large Popcorn.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/chicken_Category_File/Mini Fillet.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/chicken_Category_File/Regular Popcorn.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/chicken_Category_File/Small Popcorn.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/chicken_Category_File/Sweet Chilly Dipped.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/dessert_Category_File/4 Cookies.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/dessert_Category_File/Aero Sundae.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/dessert_Category_File/Chocolate Cookie.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/dessert_Category_File/Chocolate Sundae.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/dessert_Category_File/Milkbar Sundae.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/dessert_Category_File/Oreo Sundae.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/dessert_Category_File/Pineapple Stick.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/dessert_Category_File/White Chocolate Cookie.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/drink_Category_File/Aero Milk Shake.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/drink_Category_File/Large 7UP.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/drink_Category_File/Large Pepsi Max.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/drink_Category_File/Large Pepsi.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/drink_Category_File/Milkbar Milk Shake.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/drink_Category_File/Oreo Milk Shake.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/drink_Category_File/Regular 7UP.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/drink_Category_File/Regular Pepsi Max.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/drink_Category_File/Regular Pepsi.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/drink_Category_File/Water 500ML.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/recommended_Category_File/Bonesless Banquet.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/recommended_Category_File/Dipping Boneless Feast.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/recommended_Category_File/Mini Fillet Box.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/recommended_Category_File/Original Rice Bowl.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/recommended_Category_File/Zinger Tower Burger.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Food-Image-File/recommended_Category_File/Zingger Rice Bowl.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/food-info.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantproject/Apps/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantproject/Apps/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantproject/Restaurant/Chef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantproject/Restaurant/Chef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantproject/Restaurant/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantproject/Restaurant/OrderItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantproject/Restaurant/Restaurant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantproject/Restaurant/Restaurant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantproject/Restaurant/Waiter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantproject/Restaurant/Waiter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Category-File/dessert_Category.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Category-File/dessert_Category.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/restaurantproject/Apps/App$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/restaurantproject/Apps/App$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/restaurantproject/Apps/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/restaurantproject/Apps/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/restaurantproject/Apps/BackgroundPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/restaurantproject/Apps/BackgroundPanel.class" afterDir="false" />
@@ -38,37 +94,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App (1).executor": "Run",
-    "Application.App (2).executor": "Run",
-    "Application.App.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Anson/OneDrive - Technological University Dublin/Year 2/Semester 2/OOSD/OOSD Assignment 3/RestaurantProject2/SelfOrderingSystem",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.App (2).executor&quot;: &quot;Run&quot;,
+    &quot;Application.App (3).executor&quot;: &quot;Run&quot;,
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Food_Insert.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Anson/OneDrive - Technological University Dublin/Year 2/Semester 2/OOSD/OOSD Assignment 3/RestaurantProject2/SelfOrderingSystem/src/main/resources/Category-File&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Anson\OneDrive - Technological University Dublin\Year 2\Semester 2\OOSD\OOSD Assignment 3\RestaurantProject2\SelfOrderingSystem\src\main\resources\Category-File" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Anson\OneDrive - Technological University Dublin\Year 2\Semester 2\OOSD\OOSD Assignment 3\RestaurantProject2\SelfOrderingSystem\src\main\resources" />
-      <recent name="C:\Users\anson\OneDrive - Technological University Dublin\Year 2\Semester 2\OOSD\OOSD Assignment 3\RestaurantProject\src\main\resources" />
-      <recent name="C:\Users\anson\OneDrive - Technological University Dublin\Year 2\Semester 2\OOSD\OOSD Assignment 3\RestaurantProject\src\main\java\com\restaurantproject\Restaurant" />
+      <recent name="C:\Users\Anson\OneDrive - Technological University Dublin\Year 2\Semester 2\OOSD\OOSD Assignment 3\RestaurantProject2\SelfOrderingSystem\src\main\resources\Food-Image-File\recommended_Category_File" />
+      <recent name="C:\Users\Anson\OneDrive - Technological University Dublin\Year 2\Semester 2\OOSD\OOSD Assignment 3\RestaurantProject2\SelfOrderingSystem\src\main\resources\Food-Image-File\dessert_Category_File" />
+      <recent name="C:\Users\Anson\OneDrive - Technological University Dublin\Year 2\Semester 2\OOSD\OOSD Assignment 3\RestaurantProject2\SelfOrderingSystem\src\main\resources\Food-Image-File\burger_Category_File" />
+      <recent name="C:\Users\Anson\OneDrive - Technological University Dublin\Year 2\Semester 2\OOSD\OOSD Assignment 3\RestaurantProject2\SelfOrderingSystem\src\main\resources\Food-Image-File\drink_Category_File" />
+      <recent name="C:\Users\Anson\OneDrive - Technological University Dublin\Year 2\Semester 2\OOSD\OOSD Assignment 3\RestaurantProject2\SelfOrderingSystem\src\main\resources\Food-Image-File\bucket_Category_File" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App (2)">
+  <component name="RunManager" selected="Application.App (3)">
     <configuration name="App (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.restaurantproject.Apps.App" />
       <module name="RestaurantProject" />
@@ -95,6 +158,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="App (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.restaurantproject.Apps.App" />
+      <module name="RestaurantProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.restaurantproject.Apps.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.restaurantproject.Apps.App" />
       <module name="RestaurantProject" />
@@ -108,8 +184,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Food_Insert" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.restaurantproject.Apps.Food_Insert" />
+      <module name="RestaurantProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.restaurantproject.Apps.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App (3)" />
+        <item itemvalue="Application.Food_Insert" />
         <item itemvalue="Application.App (2)" />
         <item itemvalue="Application.App (1)" />
         <item itemvalue="Application.App" />
@@ -136,7 +227,20 @@
       <workItem from="1742815049921" duration="12000" />
       <workItem from="1742815065743" duration="1000" />
       <workItem from="1742920557740" duration="798000" />
-      <workItem from="1742988650737" duration="343000" />
+      <workItem from="1742988650737" duration="525000" />
+      <workItem from="1743076410690" duration="7582000" />
+      <workItem from="1743162176276" duration="3184000" />
+      <workItem from="1743502059060" duration="261000" />
+      <workItem from="1743680656773" duration="314000" />
+      <workItem from="1743762247058" duration="814000" />
+      <workItem from="1743764296890" duration="2331000" />
+      <workItem from="1744021076601" duration="7000" />
+      <workItem from="1744043568751" duration="9657000" />
+      <workItem from="1744105051802" duration="5007000" />
+      <workItem from="1744110466306" duration="547000" />
+      <workItem from="1744122244585" duration="3705000" />
+      <workItem from="1744127836788" duration="2458000" />
+      <workItem from="1744136747926" duration="8074000" />
     </task>
     <task id="LOCAL-00001" summary="Implementing the final GUI and Thread">
       <option name="closed" value="true" />
@@ -155,5 +259,15 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implementing the final GUI and Thread" />
     <option name="LAST_COMMIT_MESSAGE" value="Implementing the final GUI and Thread" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

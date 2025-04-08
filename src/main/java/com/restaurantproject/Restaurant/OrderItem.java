@@ -5,32 +5,35 @@ import javax.swing.*;
 public class OrderItem {
     private int orderNumber;
     private String orderType;
+    private String Category;
     private String imagePath;
     private String foodName;
-    private Double foodPrice;
+    private double foodPrice;
     private int quantity;
 
-    public OrderItem(String orderType, String image, String foodName, Double foodPrice, int quantity) {
-        this.orderType = orderType;
-        this.imagePath = image;
-        this.foodName = foodName;
-        this.foodPrice = foodPrice;
-        this.quantity = quantity;
-    }
-
-    public OrderItem(int orderNumber, String orderType, String foodName, Double foodPrice, int quantity) {
+    public OrderItem(int orderNumber, String orderType, String category, String foodName, double foodPrice, int quantity) {
         this.orderNumber = orderNumber;
         this.orderType = orderType;
+        this.Category = category;
         this.foodName = foodName;
         this.foodPrice = foodPrice;
         this.quantity = quantity;
     }
 
-    public OrderItem(String orderType, String foodName, Double foodPrice, int quantity) {
+
+    public OrderItem(String orderType, String category, String foodName, double foodPrice, int quantity) {
         this.orderType = orderType;
+        this.Category = category;
         this.foodName = foodName;
         this.foodPrice = foodPrice;
         this.quantity = quantity;
+    }
+
+    public OrderItem(String category, String imagePath, String foodName, double foodPrice) {
+        this.Category = category;
+        this.imagePath = imagePath;
+        this.foodName = foodName;
+        this.foodPrice = foodPrice;
     }
 
     public OrderItem(String foodName, Double foodPrice, int quantity) {
@@ -48,6 +51,10 @@ public class OrderItem {
     public void setOrderType(String orderType) {
         this.orderType = orderType;
     }
+
+    public String getCategory() {return this.Category;}
+
+    public void setCategory(String category) {this.Category = category;}
 
     public String getImage() {
         return imagePath;
@@ -78,6 +85,6 @@ public class OrderItem {
     }
 
     public String toString() {
-        return "Order Number: " + orderNumber + " Order Type: " + this.orderType + " Food Name: " + this.foodName + " Price: " + this.foodPrice + " Quantity: " + this.quantity;
+        return "Order Number: " + orderNumber + " - Order Type: " + this.orderType + " - Category: " + this.Category + " - Food Name: " + this.foodName + " - Price: " + this.foodPrice + " - Quantity: " + this.quantity;
     }
 }

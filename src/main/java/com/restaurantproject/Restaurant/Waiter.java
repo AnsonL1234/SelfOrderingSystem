@@ -6,18 +6,14 @@ import java.util.List;
 public class Waiter extends Thread{
 
     private boolean isComplete = false;
-    private OrderItem orderItem;
-    private final Chef chef;
-    private List<OrderItem> waiterCollection = new ArrayList<OrderItem>();
+    private OrderItem orderItem;;
+    Chef chef = null;
 
-    public Waiter(List<OrderItem> waiterCollection, Chef chef) {
-        this.waiterCollection = waiterCollection;
-        this.chef = chef;
-    }
-
-    public Waiter() {
-        this.waiterCollection = null;
-        this.chef = null;
+    public Waiter(OrderItem orderItem) {
+        this.orderItem = orderItem;
+        System.out.println("Waiter - Passes over the food " + orderItem.getFoodName());
+        this.chef = new Chef(this);
+        chef.start();
     }
 
     public boolean getIsComplete() {
@@ -30,22 +26,20 @@ public class Waiter extends Thread{
 
     public void run() {
 
-        synchronized (chef) {
-            // handle the order to chef to prepare food
-            for (OrderItem orderItem1: waiterCollection) {
-                System.out.println("Preparing the food");
-                chef.prepareOrder(orderItem1);
-            }
-            chef.notify();
-        }
-
         synchronized (this) {
-            while (waiterCollection.isEmpty()) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            try {
+                if (chef.isAlive()) {
+                    chef.isReceivedOrder(orderItem);
+                    System.out.println("Chef has receive the order");
                 }
+
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            if (isComplete) {
+                System.out.println("The order is ready to pick up!");
             }
         }
     }

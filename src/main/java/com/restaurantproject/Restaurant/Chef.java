@@ -5,37 +5,39 @@ import java.util.List;
 
 public class Chef extends Thread{
 
-    private List<OrderItem> orderQueue = new ArrayList<>();
-    private Waiter waiter = new Waiter();
+    private OrderItem orderItem;
+    private final Waiter waiter;
 
-    public void prepareOrder(OrderItem orderItem) {
-        orderQueue.add(orderItem);
-        System.out.println("DEBUG: " + orderQueue.toString());
+    public Chef(Waiter waiter) {
+        this.waiter = waiter;
+    }
+
+    public void isReceivedOrder(OrderItem orderItem) {
+        this.orderItem = orderItem;
     }
 
     public void run() {
         synchronized (this) {
-            while (orderQueue.isEmpty()) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+            try {
+                while (orderItem == null) {
+                    Thread.sleep(100); // Wait for order to be received
                 }
+
+                System.out.println("Chef Preparing The Food " + orderItem.getFoodName());
+                Thread.sleep(3000);
+            } catch (Exception e) {
+                System.out.println("Ops....Something when wrong... ");
             }
-        }
+            System.out.println("Chef Finish The Food " + orderItem.getFoodName());
 
-        // preparing the order
-        try {
-            Thread.sleep(2000); // Simulating preparation time
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+            synchronized (waiter) {
+                //notify the waiter that the food is ready
+                waiter.notify();
+            }
 
-        synchronized (waiter) {
-            //notify the waiter that the order is ready
-            waiter.notify();
-            waiter.setIsComplete(true);
-            System.out.println("The order is ready");
+            if (orderItem != null) {
+                waiter.setIsComplete(true);
+            }
         }
     }
 }
